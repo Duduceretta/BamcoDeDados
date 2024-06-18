@@ -32,22 +32,26 @@ Nome: Eduardo C. Ceretta
     Criação de restrições, deixar somente uma chave primária em cada tabela, verificar o banco para que não haja redundância de informações, utilizar nomes que expressem o significado de cada tabela para melhor legibilidade do código.
 
 Todos os clientes armazenados no sistema:
+
 select *
 from cliente
 order by nome;
 
 Exiba os veículos que tenham final 3 no número da placa
+
 select *
 from veiculo
 where placa like '%3'; 
 
 Mostre os clientes que residem no RS e que não possuam telefone
+
 select * 
 from cliente
 where uf_cnh = 'RS' 
 and telefone is null;
 
 Exiba o código dos clientes que alugaram veículos por mais de 90 dias.
+
 select cliente.id_cliente
 from cliente
 inner join contrato_aluguel
@@ -59,6 +63,7 @@ select count(*)
 from veiculo;
 
 Mostre o veículo alugado por Alexandre Zamberlan.
+
 select veiculo.*
 from veiculo
 inner join contrato_aluguel
@@ -68,6 +73,7 @@ on contrato_aluguel.id_cliente = cliente.id_cliente
 where cliente.nome = 'Alexandre Zamberlan';
 
 Mostre os clientes e os escritórios associados no contrato de aluguel.
+
 select distinct cliente.nome, escritorio.nome
 from contrato_aluguel
 inner join cliente
